@@ -92,4 +92,3 @@ Before activation we should replace working IDs with content-addressed artifact
 references, compile rules into the Lean-owned mission surfaces, preview every
 visible fact and contribution, sign a new content epoch, and run the release
 gate. Until that ceremony, this directory is only a private writing room.
-
