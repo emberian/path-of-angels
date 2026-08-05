@@ -26,6 +26,8 @@ The protected beta is at <https://beta.pathofangels.network>.
 - `docs/poa/PLATFORM-ROADMAP.md` is the broad product map; the other included
   documents cover current staging, Neocadia-derived mechanic shapes, and the
   honest Dark Bazaar guarantee ledger.
+- `docs/poa/SENTYR-BRIEF.md` is the current shareable tour and mechanics menu
+  for the show's author.
 
 Read [SOURCE-MAP.md](SOURCE-MAP.md) before treating this as a standalone
 monorepo. Execution, persistence, Solana admission, proofs, FHE/MPC, and live
@@ -50,10 +52,11 @@ referenced by exact source path rather than copied here in incomplete slices.
 
 ## Provenance
 
-The initial reviewed snapshot was exported from `emberian/dregg` commit
-`83a7dce8663fe688d922ff2b92578c0de7445c07` on 2026-08-04. A copied file is a
-collaboration surface; signed release receipts and their exact Dregg commits
-remain deployment authority.
+The current reviewed collaboration snapshot was exported from `emberian/dregg`
+commit `a9fd19dbc0f938939ec06715b50b4bae98d0ffc3` on 2026-08-05. The initial
+snapshot was `83a7dce8663fe688d922ff2b92578c0de7445c07`. A copied file is a collaboration
+surface; signed release receipts and their exact Dregg commits remain
+deployment authority.
 
 Code is AGPL-3.0-or-later unless a file says otherwise. See [LICENSE](LICENSE)
 and [CONTENT-RIGHTS.md](CONTENT-RIGHTS.md).
