@@ -15,7 +15,7 @@ not an incomplete copy of every Dregg subsystem.
 
 ## Canonical Dregg seams not copied here
 
-At upstream commit `e52fcc3090229b64d2fde2eeee66b6a80f52b559`:
+At upstream commit `cba0e03c90c5b701e4ad5dae6d6abfa7d5534130`:
 
 - native Lean calls: `dregg-lean-ffi/src/poa_*.rs` and PoA probes;
 - node execution/admission: `node/src/poa_*.rs` plus node router wiring;
@@ -36,10 +36,12 @@ The selected Rust and Lean directories retain monorepo-relative dependencies;
 build and proof authority remains the Dregg monorepo until those package
 boundaries are deliberately extracted.
 
-The collaboration mirror makes one portability-only test adaptation: the
-cross-wire browser fixture skips its source-text comparison when the deliberately
-excluded Dregg Rust seams are absent. The byte-pinned wire vector still runs here;
-the canonical upstream gate must run the Rust source comparison and may not skip it.
+The collaboration mirror makes portability-only test adaptations: the cross-wire
+browser fixture skips its source-text comparison when the deliberately excluded
+Dregg Rust seams are absent, and lab provenance/emitter tests skip upstream Git-tree
+and Lean-build-graph checks that cannot exist in this selective mirror. Byte-pinned
+wire, source-byte, provenance, and generated fixture checks still run here; the
+canonical upstream gates must run every Rust, Git-tree, and Lean regeneration check.
 
 ## Deliberate exclusions
 

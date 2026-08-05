@@ -1,0 +1,12 @@
+{
+  "name": "poa-private-beta-galley-first-expedition",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "poa-pack": "./tools/poa-pack.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/poa-pack.test.mjs tests/night-watch-journey.test.mjs && node tests/validate.mjs",
+    "validate": "node tools/poa-pack.mjs validate --pack pack.json --schema schema/poa-beta-content-pack.schema.json"
+  }
+}

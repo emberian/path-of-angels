@@ -12,6 +12,9 @@ import { loadSalvageLockDescriptor } from "./salvage-runtime.js";
 import { launchCatalogMission } from "./mission-launcher.js";
 import { mountDreggAdmissionPanel } from "./dregg-admission-panel.js";
 import { getWalletStandardRegistry } from "./wallet-standard-registry.js";
+import { mountGalley } from "./galley-controller.js";
+import { createGalleyTransport } from "./galley-runtime.js";
+import { resolveTerminalRoute } from "./terminal-route.js";
 import {
   buildPlatformModel,
   loadPlatformEvidence,
@@ -28,6 +31,7 @@ const state = {
   signal: null,
   run: null,
   draft: [],
+  galleyController: null,
   platformEvidence: Object.freeze({}),
   contentAuthority: Object.freeze({ state: "pending" }),
 };
@@ -48,9 +52,8 @@ const deckCopy = {
 };
 
 function route() {
-  const requested = location.hash.slice(1) || "overview";
   const known = [...document.querySelectorAll("[data-view]")].map((node) => node.dataset.view);
-  const active = known.includes(requested) ? requested : "overview";
+  const active = resolveTerminalRoute(location, known);
   document.querySelectorAll("[data-view]").forEach((view) => view.classList.toggle("active", view.dataset.view === active));
   document.querySelectorAll("[data-route]").forEach((link) => link.classList.toggle("active", link.dataset.route === active));
   document.title = `${active === "overview" ? "KHOVOKHI" : active.toUpperCase()} // Path of Angels`;
@@ -78,6 +81,22 @@ function initializeChrome() {
 
   byId("signal-clear").addEventListener("click", clearDraft);
   byId("signal-submit").addEventListener("click", submitDraft);
+}
+
+function initializeGalley() {
+  const root = byId("galley-root");
+  if (!root) return;
+  try {
+    state.galleyController = mountGalley(root, {
+      transport: createGalleyTransport({ origin: location.origin }),
+      dreggProvider: window.dregg ?? null,
+    });
+  } catch (error) {
+    console.error("PoA Galley unavailable", error);
+    root.dataset.state = "unavailable";
+    const fallback = root.querySelector("p:last-child");
+    if (fallback) fallback.textContent = "The versioned Galley node instrument is unavailable. No browser-authored game fallback was opened.";
+  }
 }
 
 function initializeDreggAdmission() {
@@ -341,6 +360,7 @@ function escapeHtml(value) {
 
 async function boot() {
   initializeChrome();
+  initializeGalley();
   initializeDreggAdmission();
   const platformEvidence = initializePlatformEvidence();
   try {
