@@ -53,7 +53,7 @@ referenced by exact source path rather than copied here in incomplete slices.
 ## Provenance
 
 The current reviewed collaboration snapshot was exported from `emberian/dregg`
-commit `a9fd19dbc0f938939ec06715b50b4bae98d0ffc3` on 2026-08-05. The initial
+commit `e52fcc3090229b64d2fde2eeee66b6a80f52b559` on 2026-08-05. The initial
 snapshot was `83a7dce8663fe688d922ff2b92578c0de7445c07`. A copied file is a collaboration
 surface; signed release receipts and their exact Dregg commits remain
 deployment authority.

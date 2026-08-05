@@ -15,7 +15,7 @@ not an incomplete copy of every Dregg subsystem.
 
 ## Canonical Dregg seams not copied here
 
-At upstream commit `a9fd19dbc0f938939ec06715b50b4bae98d0ffc3`:
+At upstream commit `e52fcc3090229b64d2fde2eeee66b6a80f52b559`:
 
 - native Lean calls: `dregg-lean-ffi/src/poa_*.rs` and PoA probes;
 - node execution/admission: `node/src/poa_*.rs` plus node router wiring;
