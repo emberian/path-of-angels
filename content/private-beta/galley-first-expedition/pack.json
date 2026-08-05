@@ -1,0 +1,1086 @@
+{
+  "$schema": "./schema/poa-beta-content-pack.schema.json",
+  "schemaVersion": 1,
+  "packId": "afterwatch-night-watch-beta-one",
+  "status": {
+    "tier": "beta-draft",
+    "spoilers": true,
+    "authoritative": false,
+    "storyAuthority": "Sentyr (@alteron808)",
+    "activationState": "not-activated"
+  },
+  "designSources": [
+    {
+      "source": "Neocadia recurring-place and daily-system specifications",
+      "borrowedShape": "A familiar room, several tiny return verbs, deterministic daily rotation, and alternatives that do not punish late visitors.",
+      "excludedMaterial": "All setting, characters, prose, currencies, streaks, reward arithmetic, and generated lore."
+    },
+    {
+      "source": "Dregg authored-dungeon and Descent systems",
+      "borrowedShape": "Small directed topology, explicit gates, finite resources, exact extraction, alternate routes, and replayable consequences.",
+      "excludedMaterial": "Existing dungeon names, rooms, NPCs, objects, narration, and fantasy skin."
+    },
+    {
+      "source": "Path of Angels Galley Commons and Maintenance Daily semantics",
+      "borrowedShape": "At least three bounded choices with neighborly alternatives, one visit per finalized day, and an ordered procedure of at most eight steps.",
+      "excludedMaterial": "No browser clock, streak, free asset mint, automatic canon, or holder advantage."
+    },
+    {
+      "source": "Path of Angels Crew Field Mission and deck graph semantics",
+      "borrowedShape": "Four exact roles, private observations disclosed by signed handoff, three routes, supported safe return, unanimous deep recovery, and extraction-reachable phase-aware topology.",
+      "excludedMaterial": "No claim of deployed briefing privacy, runtime settlement, or activated expedition content."
+    }
+  ],
+  "canonBoundary": {
+    "gameplayTier": "beta",
+    "alphaAuthority": "sentyr-explicit-curator-action",
+    "automaticPromotion": false,
+    "interpretationRule": "The pack may assert finite game behavior and what instruments record. It may not decide why Artificer machinery behaves that way, what an object ultimately is, or whether any observation is true in the show."
+  },
+  "recurringPlace": {
+    "id": "afterwatch-galley",
+    "workingName": "The Afterwatch Galley",
+    "pitch": "A human-scale island built inside a room that was never designed as a galley: warm, overworked, patched in six incompatible eras, and close enough to the expedition lifts that returning crews arrive before their explanations do.",
+    "playerVerbs": [
+      "take-serving",
+      "work-maintenance",
+      "read-scar-table",
+      "provision-expedition",
+      "leave-field-note"
+    ],
+    "stations": [
+      {
+        "id": "reconstitution-rail",
+        "workingName": "Reconstitution Rail",
+        "function": "Presents the day's bounded commons choices and always offers a neighborly alternative after a featured serving is gone.",
+        "changesWhen": "A finalized-day rotation changes, a serving reaches capacity, or a maintenance result is durably recorded."
+      },
+      {
+        "id": "scar-table",
+        "workingName": "Scar Table",
+        "function": "A table whose repairs, burns, route scratches, and crew annotations become a local history rather than disposable flavor text.",
+        "changesWhen": "A crew returns, a beta field record is pinned, or Sentyr chooses a trace to preserve in a later content epoch."
+      },
+      {
+        "id": "return-lock-window",
+        "workingName": "Return-lock Window",
+        "function": "Faces the service lift and makes extraction arrivals, quarantine delays, and missing equipment visible to the room.",
+        "changesWhen": "An expedition closes with a recovery consequence; presentation reflects only a settled result."
+      },
+      {
+        "id": "vat-service-trench",
+        "workingName": "Vat Service Trench",
+        "function": "Hosts the bounded daily maintenance procedure and exposes enough sound, pressure, and flow state to make the work legible.",
+        "changesWhen": "The procedure advances in exact order or the next activated maintenance task supersedes it."
+      }
+    ],
+    "persistentTraces": [
+      "A returned crew may leave one provenance-linked field note on the Scar Table; free prose remains commentary, not canon.",
+      "A settled maintenance result may change one visible instrument state for the active content epoch.",
+      "Recovery consequences can temporarily alter props at the Return-lock Window but cannot silently debit global world meters.",
+      "A promoted hook may preserve one exact phrase, shape, or object reference; rejected drafts remain beta records."
+    ],
+    "sentyrQuestions": [
+      "Would the crew themselves call this the Afterwatch Galley, or is that an outsider's tidy name for a messier place?",
+      "Who actually keeps this place socially coherent when expedition officers and ordinary residents collide?",
+      "Which visible part of the Galley would reveal too much about the Khovokhi this early and should therefore remain off-camera or sealed?"
+    ]
+  },
+  "commonsRotations": [
+    {
+      "id": "rotation-pressure-weather",
+      "sceneCopy": "The serving rail clicks with each distant pressure correction. Nobody looks up until the third one comes early.",
+      "choices": [
+        {
+          "id": "steady-bowl",
+          "workingLabel": "Steady Bowl",
+          "capacity": 24,
+          "localService": 8,
+          "servedCopy": "The bowl is hot, plain, and correctly salted. Today that counts as engineering.",
+          "alternativeCopy": "The hot batch is gone. The rail opens a shelf of sealed travel portions and somebody has already left spoons beside them.",
+          "provisioningTag": "steady"
+        },
+        {
+          "id": "watch-cup",
+          "workingLabel": "Watch Cup",
+          "capacity": 12,
+          "localService": 5,
+          "servedCopy": "A bitter cup that warms the tongue before the hands. The label recommends one. The handwriting below it recommends honesty.",
+          "alternativeCopy": "The concentrate is spent, so the rail dilutes the last measure into a shared pot. It is weaker and there is enough for everyone.",
+          "provisioningTag": "alert"
+        },
+        {
+          "id": "soft-return",
+          "workingLabel": "Soft Return",
+          "capacity": 8,
+          "localService": 12,
+          "servedCopy": "The texture is deliberately unremarkable. A returning crew member closes both hands around it anyway.",
+          "alternativeCopy": "The recovery tray is empty. The galley marks a fresh plate for the next batch and serves you from the ordinary pot with the same blue cup.",
+          "provisioningTag": "recovery"
+        },
+        {
+          "id": "lift-packet",
+          "workingLabel": "Lift Packet",
+          "capacity": 6,
+          "localService": 3,
+          "servedCopy": "A compact ration locks shut around a warming tab and a strip for writing the route home.",
+          "alternativeCopy": "The expedition packets are assigned. The quartermaster's shelf offers the same food in an inelegant container and asks you to bring that one back.",
+          "provisioningTag": "expedition"
+        }
+      ]
+    },
+    {
+      "id": "rotation-quiet-shift",
+      "sceneCopy": "The room is between watches. The rail keeps serving, the Scar Table keeps its own counsel, and the return lift has not moved for forty minutes.",
+      "choices": [
+        {
+          "id": "quiet-broth",
+          "workingLabel": "Quiet Broth",
+          "capacity": 18,
+          "localService": 7,
+          "servedCopy": "Steam erases the reflection on the bowl before you can decide whose face it resembled.",
+          "alternativeCopy": "The broth is finished. A covered tray holds baked ration squares and a note: QUIET IS NOT THE SAME AS EMPTY.",
+          "provisioningTag": "steady"
+        },
+        {
+          "id": "salt-fold",
+          "workingLabel": "Salt Fold",
+          "capacity": 10,
+          "localService": 6,
+          "servedCopy": "Thin layers crack apart around a sharp mineral filling. Someone has counted the layers in pencil: eleven, then thirteen, then eleven again.",
+          "alternativeCopy": "Only crumbs remain. The rail gathers them into a warm cup with stock; the layer count is no longer anybody's problem.",
+          "provisioningTag": "alert"
+        },
+        {
+          "id": "shared-heel",
+          "workingLabel": "Shared Heel",
+          "capacity": 32,
+          "localService": 4,
+          "servedCopy": "A dense end-piece, cut thick enough to trade half without making a ceremony of it.",
+          "alternativeCopy": "The basket is empty. A crew at the Scar Table silently moves their untouched plate to the rail and pretends not to notice who takes it.",
+          "provisioningTag": "recovery"
+        },
+        {
+          "id": "sealed-flask",
+          "workingLabel": "Sealed Flask",
+          "capacity": 5,
+          "localService": 2,
+          "servedCopy": "The seal shows yesterday's pressure, today's route mark, and a blank square for the person who carries it back.",
+          "alternativeCopy": "No calibrated flasks remain. The rail offers an ordinary bottle and prints a tag that says NOT FOR FIELD METRICS in letters nobody can miss.",
+          "provisioningTag": "expedition"
+        }
+      ]
+    },
+    {
+      "id": "rotation-return-alarm",
+      "sceneCopy": "The return-lock lamp goes amber halfway through service. The Galley lowers its voice without stopping work; a clean place is cleared at the Scar Table and four cups are set there before anyone knows how many will return.",
+      "choices": [
+        {
+          "id": "amber-mash",
+          "workingLabel": "Amber Mash",
+          "capacity": 20,
+          "localService": 9,
+          "servedCopy": "The mash tastes faintly of toasted grain. Its bowl has a wide foot so a shaking hand cannot easily overturn it.",
+          "alternativeCopy": "The mash is committed to the return table. The rail serves the same ration pressed into crisp squares, and leaves the wide bowls where they are needed.",
+          "provisioningTag": "recovery"
+        },
+        {
+          "id": "lamp-tea",
+          "workingLabel": "Lamp Tea",
+          "capacity": 16,
+          "localService": 5,
+          "servedCopy": "A resinous tea catches the amber light and makes the whole cup seem deeper than it is.",
+          "alternativeCopy": "The last steep is gone. Hot water, peel, and salt arrive in an unlovely cup that does the same practical work.",
+          "provisioningTag": "alert"
+        },
+        {
+          "id": "watch-crust",
+          "workingLabel": "Watch Crust",
+          "capacity": 28,
+          "localService": 6,
+          "servedCopy": "The crust is scored into four unequal pieces. People take one and leave the plate moving.",
+          "alternativeCopy": "The plate has made its circuit. The cook breaks two ordinary ration loaves and starts another without comment.",
+          "provisioningTag": "steady"
+        },
+        {
+          "id": "return-sling",
+          "workingLabel": "Return Sling",
+          "capacity": 8,
+          "localService": 3,
+          "servedCopy": "A soft ration, water pouch, clean tie, and blank field tag share one cloth sling. Nothing in it assumes what happened.",
+          "alternativeCopy": "The prepared slings are at the lock. The quartermaster folds the same four items into a galley cloth and stamps the tag by hand.",
+          "provisioningTag": "expedition"
+        }
+      ]
+    },
+    {
+      "id": "rotation-filter-rain",
+      "sceneCopy": "Condensate ticks through the overhead filter in a rhythm almost, but not quite, like rain. Every third table has a pan under it. The pans have become part of the furniture.",
+      "choices": [
+        {
+          "id": "filter-cake",
+          "workingLabel": "Filter Cake",
+          "capacity": 22,
+          "localService": 7,
+          "servedCopy": "A browned square carries parallel marks from the clean side of a filter rack. Someone has drawn a tiny roof over them in sauce.",
+          "alternativeCopy": "The rack is empty. The rail serves steamed grain under the same tiny sauce roof, which turns out to be the part people wanted.",
+          "provisioningTag": "steady"
+        },
+        {
+          "id": "bright-pickle",
+          "workingLabel": "Bright Pickle",
+          "capacity": 14,
+          "localService": 4,
+          "servedCopy": "The first bite is all acid and noise. Conversation restarts around the table as if somebody reset a breaker.",
+          "alternativeCopy": "Only brine remains. It is whisked into hot broth, becoming less dramatic and more useful.",
+          "provisioningTag": "alert"
+        },
+        {
+          "id": "dry-sleeve",
+          "workingLabel": "Dry Sleeve",
+          "capacity": 10,
+          "localService": 8,
+          "servedCopy": "A warm absorbent sleeve wraps the cup and then the wrist. The printed instructions pretend this was always the design.",
+          "alternativeCopy": "The sleeves are all hanging over damp rails. A folded galley cloth and a cup ring do the job without claiming to be equipment.",
+          "provisioningTag": "recovery"
+        },
+        {
+          "id": "sealed-crumb",
+          "workingLabel": "Sealed Crumb",
+          "capacity": 7,
+          "localService": 2,
+          "servedCopy": "A dry field packet rattles when shaken. The route line is printed on dissolving paper so nobody has to bring the wrapper home.",
+          "alternativeCopy": "The sealed packets are gone. The rail packs loose food in a washable tin and adds one more return item to the field list.",
+          "provisioningTag": "expedition"
+        }
+      ]
+    },
+    {
+      "id": "rotation-witness-shift",
+      "sceneCopy": "Three settled field strips are pinned above the Scar Table. They disagree about a pressure interval and agree about the sound after it. Diners compare the marks without pretending agreement is interpretation.",
+      "choices": [
+        {
+          "id": "witness-stew",
+          "workingLabel": "Witness Stew",
+          "capacity": 26,
+          "localService": 8,
+          "servedCopy": "Each bowl gets a numbered tile. The number means which vat it came from and absolutely nothing else, despite vigorous theories.",
+          "alternativeCopy": "The stew is finished. The numbered tiles move to a tray of cold cuts so the provenance survives the menu.",
+          "provisioningTag": "steady"
+        },
+        {
+          "id": "interval-coffee",
+          "workingLabel": "Interval Coffee",
+          "capacity": 12,
+          "localService": 6,
+          "servedCopy": "Four small pours arrive with deliberate pauses between them. The pauses are not the ones on the field strip.",
+          "alternativeCopy": "The concentrate is empty. Four sips of hot broth arrive with the same pauses, preserving the joke and none of the stimulant.",
+          "provisioningTag": "alert"
+        },
+        {
+          "id": "recovery-pair",
+          "workingLabel": "Recovery Pair",
+          "capacity": 10,
+          "localService": 10,
+          "servedCopy": "Two small plates arrive together: one easy to eat, one worth wanting. The blue medical tag stays under the tray.",
+          "alternativeCopy": "The paired plates are spoken for. The cook splits an ordinary serving into two bowls and keeps the medical tag out of sight.",
+          "provisioningTag": "recovery"
+        },
+        {
+          "id": "chalk-packet",
+          "workingLabel": "Chalk Packet",
+          "capacity": 9,
+          "localService": 3,
+          "servedCopy": "The packet includes food, a grease chalk, and a card that says MARK THE WAY BACK BEFORE THE WAY DOWN.",
+          "alternativeCopy": "The field packets are assigned. The quartermaster hands over ordinary food and the same chalk, refusing to let packaging become doctrine.",
+          "provisioningTag": "expedition"
+        }
+      ]
+    },
+    {
+      "id": "rotation-maintenance-heat",
+      "sceneCopy": "The service trench is open and the Galley is warmer by four degrees. Half the room treats this as weather; the other half keeps handing tools down through the floor.",
+      "choices": [
+        {
+          "id": "cool-grain",
+          "workingLabel": "Cool Grain",
+          "capacity": 24,
+          "localService": 7,
+          "servedCopy": "The grain is chilled, sharp with herbs, and served in the only corner not radiating machinery heat.",
+          "alternativeCopy": "The chilled tray is gone. A plain ration and a seat beside the return vent offer a less culinary kind of relief.",
+          "provisioningTag": "steady"
+        },
+        {
+          "id": "trench-salt",
+          "workingLabel": "Trench Salt",
+          "capacity": 18,
+          "localService": 5,
+          "servedCopy": "Salt, citrus, and water come in a marked cup whose line must be visible when it is returned.",
+          "alternativeCopy": "No marked cups remain. The same drink arrives in glass with a paper line taped around it.",
+          "provisioningTag": "alert"
+        },
+        {
+          "id": "wrapped-fruit",
+          "workingLabel": "Wrapped Fruit",
+          "capacity": 11,
+          "localService": 9,
+          "servedCopy": "The fruit has been peeled and wrapped for anyone whose hands are occupied, bandaged, or simply tired.",
+          "alternativeCopy": "The wrapped pieces are gone. A galley neighbor peels an ordinary one and leaves it on the clean side of your tray.",
+          "provisioningTag": "recovery"
+        },
+        {
+          "id": "heat-shield-tin",
+          "workingLabel": "Heat-shield Tin",
+          "capacity": 6,
+          "localService": 3,
+          "servedCopy": "The insulated tin carries two meals or one meal and a fragile instrument. The label leaves the decision to the crew.",
+          "alternativeCopy": "The insulated tins are in use. Two ordinary tins nest around a strip of galley cloth and pass the same shake test.",
+          "provisioningTag": "expedition"
+        }
+      ]
+    },
+    {
+      "id": "rotation-first-return",
+      "sceneCopy": "The return lift has moved. Four muddy boot prints cross Witness Bay and stop at the Scar Table, where a field note lies face down until its recorder arrives to turn it over.",
+      "choices": [
+        {
+          "id": "home-pot",
+          "workingLabel": "Home Pot",
+          "capacity": 30,
+          "localService": 9,
+          "servedCopy": "It is the same stew as last watch, corrected with too much pepper and received like a landmark.",
+          "alternativeCopy": "The pot is scraped clean. Rice from the next shift appears early, with the same pepper passed around the table.",
+          "provisioningTag": "steady"
+        },
+        {
+          "id": "awake-slice",
+          "workingLabel": "Awake Slice",
+          "capacity": 15,
+          "localService": 5,
+          "servedCopy": "The slice is sweet, aggressively sour, and impossible to eat absent-mindedly.",
+          "alternativeCopy": "The sour slices are gone. The rail offers a hot salted cup and a handwritten warning that it is emotionally less effective.",
+          "provisioningTag": "alert"
+        },
+        {
+          "id": "blue-tray",
+          "workingLabel": "Blue Tray",
+          "capacity": 12,
+          "localService": 12,
+          "servedCopy": "Nothing on the tray needs cutting. Nothing identifies who it is for. The blue edge is enough.",
+          "alternativeCopy": "The prepared trays have gone to Witness Bay. The cook serves the same soft meal in an ordinary bowl and carries it over personally.",
+          "provisioningTag": "recovery"
+        },
+        {
+          "id": "second-window-kit",
+          "workingLabel": "Second-window Kit",
+          "capacity": 4,
+          "localService": 2,
+          "servedCopy": "The kit is deliberately expensive in attention: two seals, three witness lines, and a ration that cannot be opened by accident.",
+          "alternativeCopy": "No second-window kits remain, so no substitute pretends otherwise. The rail offers a normal return-now packet and marks the distinction plainly.",
+          "provisioningTag": "expedition"
+        }
+      ]
+    },
+    {
+      "id": "rotation-ordinary-sound",
+      "sceneCopy": "For one whole serving cycle the return line makes no remarkable sound. The Galley notices anyway. Somebody rings a spoon against the Scar Table once and nobody asks for a speech.",
+      "choices": [
+        {
+          "id": "ordinary-bowl",
+          "workingLabel": "Ordinary Bowl",
+          "capacity": 36,
+          "localService": 8,
+          "servedCopy": "Warm starch, greens, and salt: a complete argument for machinery that works quietly.",
+          "alternativeCopy": "The ordinary pot is empty. The next vat is opened early and tastes almost the same, which is the point.",
+          "provisioningTag": "steady"
+        },
+        {
+          "id": "scratch-tonic",
+          "workingLabel": "Scratch Tonic",
+          "capacity": 13,
+          "localService": 4,
+          "servedCopy": "The cup bears the same old calibration scratch as the return float. Nobody agrees which mark copied which.",
+          "alternativeCopy": "The scratched cups are all in wash. The tonic comes in plain glass and the mystery survives this indignity.",
+          "provisioningTag": "alert"
+        },
+        {
+          "id": "off-watch-pudding",
+          "workingLabel": "Off-watch Pudding",
+          "capacity": 18,
+          "localService": 10,
+          "servedCopy": "Soft, warm, and free of any instruction more urgent than sit down.",
+          "alternativeCopy": "The pudding is finished. Warm milk and bread arrive with the same absence of demands.",
+          "provisioningTag": "recovery"
+        },
+        {
+          "id": "plain-return-kit",
+          "workingLabel": "Plain Return Kit",
+          "capacity": 8,
+          "localService": 3,
+          "servedCopy": "Food, water, chalk, cloth, tag. Every part can be replaced locally and every part has a place on the return checklist.",
+          "alternativeCopy": "The assembled kits are gone. The quartermaster lays out the five ordinary components and waits while you check them yourself.",
+          "provisioningTag": "expedition"
+        }
+      ]
+    }
+  ],
+  "maintenanceProcedure": {
+    "id": "vat-return-line-bleed",
+    "workingTitle": "Bleed the Returning Line",
+    "taskCopy": "The reclamation return is singing one tone above the feed. Bring the two lines back into relation before the next batch begins.",
+    "instructionCopy": "Work in the posted order. The line remembers pressure, not confidence; an out-of-order action refuses and leaves the procedure where it was.",
+    "procedure": [
+      {
+        "id": "read-twin-gauges",
+        "verb": "inspect",
+        "prompt": "Read both mechanical needles and the vibration strip; do not average them into one number.",
+        "completionCue": "Two pressures and one rhythm are written into the shift record.",
+        "outOfOrderCue": "There is not yet a safe line to touch. The gauges are still waiting to be read.",
+        "semanticTag": "inspect"
+      },
+      {
+        "id": "isolate-feeder-three",
+        "verb": "isolate",
+        "prompt": "Close feeder three until its witness tab shows black on both edges.",
+        "completionCue": "The tab settles black-black. The high tone drops but does not disappear.",
+        "outOfOrderCue": "The feeder refuses the latch without a recorded gauge pair.",
+        "semanticTag": "isolate"
+      },
+      {
+        "id": "route-return-bypass",
+        "verb": "route",
+        "prompt": "Move the return through the short bypass, one gate at a time.",
+        "completionCue": "Warmth crosses the bypass from left to right. The long return goes quiet.",
+        "outOfOrderCue": "The bypass gate pushes back; feeder three is not visibly isolated.",
+        "semanticTag": "route"
+      },
+      {
+        "id": "vent-memory-pocket",
+        "verb": "vent",
+        "prompt": "Open the pocket until the vibration strip loses its doubled trace, then stop.",
+        "completionCue": "A breath of metallic steam leaves the trench. The strip becomes one line.",
+        "outOfOrderCue": "Venting against the long return would erase the useful reading. The bypass is not established.",
+        "semanticTag": "vent"
+      },
+      {
+        "id": "calibrate-return-float",
+        "verb": "calibrate",
+        "prompt": "Set the return float against the physical witness mark, not the terminal's suggested mark.",
+        "completionCue": "The float touches the old scratch and holds there.",
+        "outOfOrderCue": "The float cannot be calibrated while the pocket still carries the doubled trace.",
+        "semanticTag": "calibrate"
+      },
+      {
+        "id": "reseed-culture-cup",
+        "verb": "reseed",
+        "prompt": "Return one measured culture cup to the feed and close its witness seal.",
+        "completionCue": "The cup drains. A pale ring travels once around the sight glass.",
+        "outOfOrderCue": "The culture remains sealed until the return float is physically witnessed.",
+        "semanticTag": "reseed"
+      },
+      {
+        "id": "verify-first-cycle",
+        "verb": "verify",
+        "prompt": "Observe one complete cycle: feed, return, rest. Record all three states.",
+        "completionCue": "The two needles settle together. The shift record closes on an ordinary sound.",
+        "outOfOrderCue": "There is no complete cycle to witness until the culture cup is returned.",
+        "semanticTag": "verify"
+      }
+    ],
+    "successCopy": "The next serving arrives without the high tone. Someone at the Scar Table notices the silence and raises a cup.",
+    "failureCopy": "The line remains isolated and safe. The next batch is delayed; no contribution or artifact is issued for an incomplete procedure.",
+    "successCondition": "exact-ordered-procedure",
+    "semanticOutput": {
+      "intel": 0,
+      "supplies": 2,
+      "cohesion": 2,
+      "influence": 0,
+      "score": 14,
+      "relicIds": []
+    }
+  },
+  "crewMission": {
+    "id": "first-expedition-return-line",
+    "workingTitle": "One True Night Watch: Where the Return Line Goes",
+    "pitch": "A routine galley repair exposes a return line that descends past every inhabited service plan. Four crew enter to identify its source, recover what the line has been carrying, and come back through a lift that has no controls on their side.",
+    "turnBudget": 18,
+    "operationalBudget": 20,
+    "contributionBudget": {
+      "intel": 12,
+      "supplies": 8,
+      "cohesion": 8,
+      "influence": 0,
+      "score": 100,
+      "relicIds": [
+        "silent-bearing",
+        "index-film",
+        "threshold-wedge",
+        "witness-thread"
+      ]
+    },
+    "decisionRules": {
+      "safeReturn": "two-specialist-route-support",
+      "deepRecovery": "full-crew-unanimity",
+      "privacy": "operator-visible-briefings-then-public-signed-handoffs"
+    },
+    "roles": [
+      {
+        "role": "pathfinder",
+        "privateObservationKind": "mappedRoute",
+        "surveyCommand": "chart-pressure-route",
+        "salvageCommand": "mark-salvage-route",
+        "playerQuestion": "Which geometry is repeatable enough to trust on the way back?"
+      },
+      {
+        "role": "engineer",
+        "privateObservationKind": "structurallySoundRoute",
+        "surveyCommand": "brace-transit",
+        "salvageCommand": "overdrive-cargo-lift",
+        "playerQuestion": "Which route can bear four people, their tools, and whatever they recover?"
+      },
+      {
+        "role": "containment",
+        "privateObservationKind": "hazardClearRoute",
+        "surveyCommand": "quiet-anomaly",
+        "salvageCommand": "screen-recovery",
+        "playerQuestion": "Which apparently safe fact is actually the thing that should make the crew stop?"
+      },
+      {
+        "role": "quartermaster",
+        "privateObservationKind": "extractionWindow",
+        "surveyCommand": "bank-supplies",
+        "salvageCommand": "secure-cache",
+        "playerQuestion": "What can be brought home without spending the crew's route home?"
+      }
+    ],
+    "briefings": [
+      {
+        "role": "pathfinder",
+        "observation": "The signal-gallery route repeats under reversal: the return bearings are strange but consistent.",
+        "recommendedRoute": "signalGallery",
+        "disclosure": "private-until-signed-handoff"
+      },
+      {
+        "role": "engineer",
+        "observation": "The maintenance spine has the only supports that answer a load pulse with the same timing twice.",
+        "recommendedRoute": "maintenanceSpine",
+        "disclosure": "private-until-signed-handoff"
+      },
+      {
+        "role": "containment",
+        "observation": "The sealed nave reports no active transfer across its threshold; that is a measurement, not an assurance.",
+        "recommendedRoute": "sealedNave",
+        "disclosure": "private-until-signed-handoff"
+      },
+      {
+        "role": "quartermaster",
+        "observation": "The return lift's first recovery window is stable. A second descent would consume every remaining margin.",
+        "recommendedRoute": null,
+        "disclosure": "private-until-signed-handoff"
+      }
+    ],
+    "topology": {
+      "entryRoom": "service-lock",
+      "extractionRoom": "witness-bay",
+      "rooms": [
+        {
+          "id": "service-lock",
+          "workingName": "Service Lock",
+          "sensoryDraft": "Human rails stop at the inner door. Beyond them the floor is too broad and each wall begins at a different distance."
+        },
+        {
+          "id": "counting-vestibule",
+          "workingName": "Counting Vestibule",
+          "sensoryDraft": "Eight clearances cross the chamber. Instruments agree there are seven until somebody moves."
+        },
+        {
+          "id": "maintenance-crawl",
+          "workingName": "Maintenance Spine",
+          "sensoryDraft": "A row of structural members adjusts around weight that has not arrived yet."
+        },
+        {
+          "id": "pressure-bell",
+          "workingName": "Pressure Bell",
+          "sensoryDraft": "The corridor widens into a thin chamber where every pressure change becomes an audible interval."
+        },
+        {
+          "id": "signal-gallery-room",
+          "workingName": "Signal Gallery",
+          "sensoryDraft": "Signals cross the room without a visible sender, receiver, or shared direction."
+        },
+        {
+          "id": "silent-cistern",
+          "workingName": "Silent Cistern",
+          "sensoryDraft": "A dark volume holds a shoal of heatless lights at the exact height of the galley's return pipe."
+        },
+        {
+          "id": "sealed-nave-room",
+          "workingName": "Sealed Nave",
+          "sensoryDraft": "The door has no seam until the crew looks away from it. The pressure beyond is identical to the pressure here."
+        },
+        {
+          "id": "return-lift",
+          "workingName": "Uncommanded Lift",
+          "sensoryDraft": "The platform has no controls on this side. It arrives after the crew commits to waiting."
+        },
+        {
+          "id": "witness-bay",
+          "workingName": "Witness Bay",
+          "sensoryDraft": "Galley-built lamps, quarantine marks, and one ordinary manual latch make this the first room that looks inhabited."
+        }
+      ],
+      "edges": [
+        { "id": "lock-to-counting", "from": "service-lock", "to": "counting-vestibule", "modifier": "oneWay" },
+        { "id": "counting-to-spine", "from": "counting-vestibule", "to": "maintenance-crawl", "modifier": "wrapHorizontal" },
+        { "id": "spine-to-bell", "from": "maintenance-crawl", "to": "pressure-bell", "modifier": "oneWay" },
+        { "id": "bell-to-lift", "from": "pressure-bell", "to": "return-lift", "modifier": "phase0to1" },
+        { "id": "counting-to-gallery", "from": "counting-vestibule", "to": "signal-gallery-room", "modifier": "mirrorVertical" },
+        { "id": "gallery-to-cistern", "from": "signal-gallery-room", "to": "silent-cistern", "modifier": "oneWay" },
+        { "id": "cistern-to-lift", "from": "silent-cistern", "to": "return-lift", "modifier": "phase0to1" },
+        { "id": "counting-to-nave", "from": "counting-vestibule", "to": "sealed-nave-room", "modifier": "oneWay" },
+        { "id": "nave-to-cistern", "from": "sealed-nave-room", "to": "silent-cistern", "modifier": "wrapVertical" },
+        { "id": "nave-to-lift", "from": "sealed-nave-room", "to": "return-lift", "modifier": "phase0to1" },
+        { "id": "lift-to-witness", "from": "return-lift", "to": "witness-bay", "modifier": "oneWay" }
+      ]
+    },
+    "routes": [
+      {
+        "id": "maintenanceSpine",
+        "workingName": "Maintenance Spine",
+        "encounterIds": ["counting-clearances", "anticipating-truss", "pressure-intervals", "uncommanded-return"],
+        "temptation": "The structure exposes a removable bearing whose motion matches the galley return line.",
+        "warning": "This is the only route that has demonstrated repeatable load behavior; removing part of it may change that fact."
+      },
+      {
+        "id": "signalGallery",
+        "workingName": "Signal Gallery",
+        "encounterIds": ["counting-clearances", "senderless-sequence", "heatless-shoal", "uncommanded-return"],
+        "temptation": "A translucent film indexes the passing sequence without revealing what generates it.",
+        "warning": "The route repeats spatially, but the crew cannot prove that the same signal state repeats with it."
+      },
+      {
+        "id": "sealedNave",
+        "workingName": "Sealed Nave",
+        "encounterIds": ["counting-clearances", "seam-when-unseen", "inverse-tool-cradle", "heatless-shoal", "uncommanded-return"],
+        "temptation": "A tool-shaped absence at the threshold can be made portable if every role accepts the containment debt.",
+        "warning": "No active transfer is measured across the threshold. The equipment cannot establish whether the threshold itself is active."
+      }
+    ],
+    "encounters": [
+      {
+        "id": "counting-clearances",
+        "roomId": "counting-vestibule",
+        "workingName": "The Eighth Clearance",
+        "engineBinding": "navigation",
+        "mechanicalClass": "navigation",
+        "routeIds": ["maintenanceSpine", "signalGallery", "sealedNave"],
+        "mechanicalTruth": "Seven traversable clearances are declared. The eighth is presentation until a crew member changes position, after which one declared route marker moves but the graph remains extraction-reachable.",
+        "playerDecision": "Choose whether to mark the moving clearance, ignore it, or spend one survey action observing a second movement before selecting a route.",
+        "successEffect": "The chosen route receives an exact entry marker; a second observation adds intel but spends route margin.",
+        "failureEffect": "An undeclared clearance is refused as a navigation action rather than narrated into existence.",
+        "betaArtifactIds": ["artifact-clearance-motion"],
+        "sealedInterpretationQuestions": [
+          "Is the chamber counting bodies, viewpoints, something passing through elsewhere, or nothing intentional at all?",
+          "Has any crew encountered this geometry before the first beta run?"
+        ]
+      },
+      {
+        "id": "anticipating-truss",
+        "roomId": "maintenance-crawl",
+        "workingName": "The Anticipating Truss",
+        "engineBinding": "hazard",
+        "mechanicalClass": "unstableMachinery",
+        "routeIds": ["maintenanceSpine"],
+        "mechanicalTruth": "A support moves before each applied load pulse. Matching its three-step rhythm costs one specialist action; forcing it costs two supplies and records one injury step on failure.",
+        "playerDecision": "Brace for the observed rhythm, overdrive the passage, or return to the vestibule before the route phase closes.",
+        "successEffect": "The crew reaches the bearing housing without injury and may inspect the removable component.",
+        "failureEffect": "The route remains passable, but one officer gains bounded injury and deep recovery loses its clean grade.",
+        "betaArtifactIds": ["artifact-maintenance-load-trace"],
+        "sealedInterpretationQuestions": [
+          "Is anticipation a control behavior, a coupled physical response, or an artifact of how the crew measures time?"
+        ]
+      },
+      {
+        "id": "pressure-intervals",
+        "roomId": "pressure-bell",
+        "workingName": "Intervals in Pressure",
+        "engineBinding": "hazard",
+        "mechanicalClass": "pressure",
+        "routeIds": ["maintenanceSpine"],
+        "mechanicalTruth": "Four pressure intervals are emitted in a committed order. Repeating the correct vent sequence opens the phase-zero lift edge; an error costs supply but does not invent a new interval.",
+        "playerDecision": "Replay the interval sequence from shared notes or let one role commit a private recollection before the notes are revealed.",
+        "successEffect": "The lift edge advances from phase zero to phase one and the return route becomes traversable.",
+        "failureEffect": "One supply is consumed by the relief valve; the crew may retry within the turn budget or return by the vestibule.",
+        "betaArtifactIds": ["artifact-pressure-interval-record"],
+        "sealedInterpretationQuestions": [
+          "Does the interval pattern relate to a known ship system, language, warning, or accidental resonance?"
+        ]
+      },
+      {
+        "id": "senderless-sequence",
+        "roomId": "signal-gallery-room",
+        "workingName": "Sequence Without Sender",
+        "engineBinding": "discovery",
+        "mechanicalClass": "discovery",
+        "routeIds": ["signalGallery"],
+        "mechanicalTruth": "A finite sequence crosses four instrument positions in a deterministic seeded order. The crew can record ordering and timing; the content pack declares no sender, meaning, or origin.",
+        "playerDecision": "Spend actions triangulating timing, preserve the raw trace, or move before the sequence repeats.",
+        "successEffect": "The run records an exact sequence artifact and reveals the location of the index film.",
+        "failureEffect": "The raw trace remains incomplete and cannot be promoted as a complete observation.",
+        "betaArtifactIds": ["artifact-gallery-sequence"],
+        "sealedInterpretationQuestions": [
+          "Is anything sending this?",
+          "Would interpreting the sequence now spoil a later Artificer or Aspect reveal?"
+        ]
+      },
+      {
+        "id": "heatless-shoal",
+        "roomId": "silent-cistern",
+        "workingName": "Heatless Shoal",
+        "engineBinding": "containment",
+        "mechanicalClass": "containment",
+        "routeIds": ["signalGallery", "sealedNave"],
+        "mechanicalTruth": "Twelve visible points reposition around carried objects while adding no measurable heat. A containment screen creates a bounded corridor; touching a point is not an allowed action.",
+        "playerDecision": "Screen a corridor, wait for one committed movement cycle, or abandon the route.",
+        "successEffect": "The crew crosses with one exact motion record and no custody mutation.",
+        "failureEffect": "The corridor closes for this run and the crew must use another extraction edge; no point becomes loot.",
+        "betaArtifactIds": ["artifact-shoal-motion"],
+        "sealedInterpretationQuestions": [
+          "Are the points objects, projections, apertures, or a sensor artifact?",
+          "Why do they organize around carried objects rather than people?"
+        ]
+      },
+      {
+        "id": "seam-when-unseen",
+        "roomId": "sealed-nave-room",
+        "workingName": "The Seam When Unseen",
+        "engineBinding": "hazard",
+        "mechanicalClass": "containment",
+        "routeIds": ["sealedNave"],
+        "mechanicalTruth": "The threshold's seam is exposed only during a declared observation handoff: one role looks away while another signs what changed. No single client observation opens it.",
+        "playerDecision": "Perform the two-role handoff, record the closed threshold, or withdraw without testing it.",
+        "successEffect": "A finite phase transition exposes the nave route and binds both observations into the field record.",
+        "failureEffect": "An unsigned or same-role handoff is refused; the threshold remains closed and custody remains unchanged.",
+        "betaArtifactIds": ["artifact-threshold-handoff"],
+        "sealedInterpretationQuestions": [
+          "Does observation matter to the mechanism or only to the crew's ability to find the seam?",
+          "Was the nave sealed by Artificers, by later occupants, or by no deliberate actor?"
+        ]
+      },
+      {
+        "id": "inverse-tool-cradle",
+        "roomId": "sealed-nave-room",
+        "workingName": "Inverse Tool Cradle",
+        "engineBinding": "salvage",
+        "mechanicalClass": "salvage",
+        "routeIds": ["sealedNave"],
+        "mechanicalTruth": "A bounded cavity accepts one declared calibration block and returns a portable wedge-shaped object with matching mass. The exchange is all-or-nothing and requires the deep-recovery decision.",
+        "playerDecision": "Leave the cavity untouched, exchange the block under full-crew unanimity, or photograph the dimensions and return.",
+        "successEffect": "The threshold wedge enters carried custody and the calibration block is unavailable until a later authored recovery procedure.",
+        "failureEffect": "Without unanimous authorization the exchange refuses. A partial insertion changes no custody and grants no relic.",
+        "betaArtifactIds": ["artifact-cradle-exchange"],
+        "sealedInterpretationQuestions": [
+          "Is this a tool rack, a manufacturing interface, a lock, or an analogy the crew is imposing?",
+          "What, if anything, makes the returned wedge important beyond this expedition?"
+        ]
+      },
+      {
+        "id": "uncommanded-return",
+        "roomId": "return-lift",
+        "workingName": "The Lift With No Controls",
+        "engineBinding": "extraction",
+        "mechanicalClass": "recovery",
+        "routeIds": ["maintenanceSpine", "signalGallery", "sealedNave"],
+        "mechanicalTruth": "The lift arrives at one committed extraction window. Boarding closes the expedition; waiting for the deep window requires full-crew unanimity and spends the declared route cost.",
+        "playerDecision": "Return now with the current record or unanimously descend once more for the route's declared recovery candidate.",
+        "successEffect": "The crew, field record, and exact carried custody arrive at Witness Bay in one terminal result.",
+        "failureEffect": "Missing the committed window yields a bounded recovery consequence, not character death or an invented branch; the host cannot retroactively choose a kinder outcome.",
+        "betaArtifactIds": ["artifact-return-window"],
+        "sealedInterpretationQuestions": [
+          "Who or what schedules the lift?",
+          "Should a missed window ever become an episode-scale event, or remain a beta expedition consequence?"
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "id": "artifact-clearance-motion",
+        "workingName": "Clearance Motion Record",
+        "visibility": "public-after-run",
+        "mechanicalFact": "A route marker changed position after an observer moved; the activated graph remained extraction-reachable.",
+        "interpretation": null,
+        "archiveSilhouette": "Eight narrow slots, one shown only as a dotted absence.",
+        "archiveHint": "Compare records by crew position, not by reported room count."
+      },
+      {
+        "id": "artifact-maintenance-load-trace",
+        "workingName": "Anticipatory Load Trace",
+        "visibility": "crew-record",
+        "mechanicalFact": "The support response preceded three declared load pulses by the same measured interval.",
+        "interpretation": null,
+        "archiveSilhouette": "Three paired peaks; in each pair the smaller peak comes first.",
+        "archiveHint": "The trace establishes order, not cause."
+      },
+      {
+        "id": "artifact-pressure-interval-record",
+        "workingName": "Pressure Interval Record",
+        "visibility": "public-after-run",
+        "mechanicalFact": "Four pressure intervals opened the route when replayed in exact order.",
+        "interpretation": null,
+        "archiveSilhouette": "Four arcs around an unlabelled center.",
+        "archiveHint": "A working sequence is not automatically a message."
+      },
+      {
+        "id": "artifact-gallery-sequence",
+        "workingName": "Gallery Sequence",
+        "visibility": "crew-record",
+        "mechanicalFact": "A finite signal crossed four instrument positions in a committed seeded order.",
+        "interpretation": null,
+        "archiveSilhouette": "Four vertical marks connected by a line that never touches them.",
+        "archiveHint": "Preserve raw timing before assigning symbols."
+      },
+      {
+        "id": "artifact-shoal-motion",
+        "workingName": "Shoal Motion Record",
+        "visibility": "curator-sealed",
+        "mechanicalFact": "Twelve visible points repositioned around carried objects without measurable heat.",
+        "interpretation": null,
+        "archiveSilhouette": "A dark field with twelve cutouts and a blank center.",
+        "archiveHint": "The sealed record distinguishes carried equipment but does not identify the points."
+      },
+      {
+        "id": "artifact-threshold-handoff",
+        "workingName": "Threshold Handoff",
+        "visibility": "crew-record",
+        "mechanicalFact": "Two role-exact observations bound one finite threshold phase change.",
+        "interpretation": null,
+        "archiveSilhouette": "Two offset views of a line that appears in only one.",
+        "archiveHint": "The record proves what the crew did and observed, not why the seam appeared."
+      },
+      {
+        "id": "artifact-cradle-exchange",
+        "workingName": "Cradle Exchange Record",
+        "visibility": "curator-sealed",
+        "mechanicalFact": "One calibration block entered; one equal-mass wedge left; the transition was all-or-nothing.",
+        "interpretation": null,
+        "archiveSilhouette": "A solid rectangle and an outlined wedge on opposite sides of a black field.",
+        "archiveHint": "Custody is known. Purpose is not."
+      },
+      {
+        "id": "artifact-return-window",
+        "workingName": "Return Window Record",
+        "visibility": "public-after-run",
+        "mechanicalFact": "The lift arrived at the precommitted extraction coordinate and closed the expedition on boarding.",
+        "interpretation": null,
+        "archiveSilhouette": "An empty platform under a clock with no hands.",
+        "archiveHint": "Compare arrival coordinates across settled runs before calling it a schedule."
+      }
+    ],
+    "routeOutcomes": [
+      {
+        "route": "maintenanceSpine",
+        "extraction": "returnNow",
+        "operationalCost": 2,
+        "requiredAgreement": "two-specialist-route-support",
+        "featuredArtifactId": "artifact-maintenance-load-trace",
+        "contribution": { "intel": 2, "supplies": 4, "cohesion": 4, "influence": 0, "score": 18, "relicIds": [] },
+        "recoveryConsequence": {
+          "grade": "clean",
+          "draftEffect": "The crew returns before the truss is disturbed; the Galley gains a repair trace and no prop-level recovery state.",
+          "duration": "none",
+          "implementationState": "content-draft-not-yet-semantic"
+        }
+      },
+      {
+        "route": "maintenanceSpine",
+        "extraction": "descendFurther",
+        "operationalCost": 5,
+        "requiredAgreement": "full-crew-unanimity",
+        "featuredArtifactId": "artifact-pressure-interval-record",
+        "contribution": { "intel": 3, "supplies": 2, "cohesion": 3, "influence": 0, "score": 48, "relicIds": ["silent-bearing"] },
+        "recoveryConsequence": {
+          "grade": "injured",
+          "draftEffect": "The removed bearing occupies the Galley's instrument cradle under quarantine. The engineer returns with a bounded compression injury: their wrist is wrapped at the Return-lock Window and that officer cannot take the engineer role during the next finalized recovery daily, while every other activity remains available.",
+          "duration": "one successful recovery daily plus one completed calibration check, or explicit curator-authored resolution",
+          "implementationState": "content-draft-not-yet-semantic"
+        }
+      },
+      {
+        "route": "signalGallery",
+        "extraction": "returnNow",
+        "operationalCost": 3,
+        "requiredAgreement": "two-specialist-route-support",
+        "featuredArtifactId": "artifact-gallery-sequence",
+        "contribution": { "intel": 6, "supplies": 2, "cohesion": 3, "influence": 0, "score": 25, "relicIds": [] },
+        "recoveryConsequence": {
+          "grade": "clean",
+          "draftEffect": "The exact raw sequence is archived without a meaning label; the Scar Table gains a timing strip players can compare.",
+          "duration": "none",
+          "implementationState": "content-draft-not-yet-semantic"
+        }
+      },
+      {
+        "route": "signalGallery",
+        "extraction": "descendFurther",
+        "operationalCost": 7,
+        "requiredAgreement": "full-crew-unanimity",
+        "featuredArtifactId": "artifact-shoal-motion",
+        "contribution": { "intel": 8, "supplies": 0, "cohesion": 2, "influence": 0, "score": 62, "relicIds": ["index-film"] },
+        "recoveryConsequence": {
+          "grade": "marked",
+          "draftEffect": "The recovered film continues indexing nearby instrument pulses. Its visible pattern may change the Galley archive display but makes no automatic claim about communication.",
+          "duration": "until isolated, loaned to study, or superseded by an authored observation",
+          "implementationState": "content-draft-not-yet-semantic"
+        }
+      },
+      {
+        "route": "sealedNave",
+        "extraction": "returnNow",
+        "operationalCost": 11,
+        "requiredAgreement": "two-specialist-route-support",
+        "featuredArtifactId": "artifact-threshold-handoff",
+        "contribution": { "intel": 4, "supplies": 1, "cohesion": 6, "influence": 0, "score": 31, "relicIds": [] },
+        "recoveryConsequence": {
+          "grade": "lost-opportunity",
+          "draftEffect": "The threshold closes at extraction. The beta record preserves the handoff, but this content epoch offers no second attempt at the cradle.",
+          "duration": "remainder of the activated expedition epoch",
+          "implementationState": "content-draft-not-yet-semantic"
+        }
+      },
+      {
+        "route": "sealedNave",
+        "extraction": "descendFurther",
+        "operationalCost": 12,
+        "requiredAgreement": "full-crew-unanimity",
+        "featuredArtifactId": "artifact-cradle-exchange",
+        "contribution": { "intel": 5, "supplies": 0, "cohesion": 5, "influence": 0, "score": 79, "relicIds": ["threshold-wedge"] },
+        "recoveryConsequence": {
+          "grade": "containment-debt",
+          "draftEffect": "The wedge and its sealed exchange record occupy the Return-lock Window. The spent calibration block cannot be silently restored; a later authored procedure must recover, replace, or write it off.",
+          "duration": "until explicit curator-authored resolution",
+          "implementationState": "content-draft-not-yet-semantic"
+        }
+      }
+    ]
+  },
+  "relicCandidates": [
+    {
+      "id": "silent-bearing",
+      "workingName": "Silent Bearing",
+      "sourceEncounterId": "anticipating-truss",
+      "portable": true,
+      "marketEligible": false,
+      "mechanicalFact": "A removable component retains the truss's three-step response rhythm when placed under a bounded test load.",
+      "interpretation": null,
+      "custodyPolicyDraft": "Field discovery only. Quarantine in the Galley instrument cradle; no crown, trade, disassembly, or consumption in this pack.",
+      "sentyrQuestion": "Is it acceptable for this to be a real Artificer component, or should it remain an ordinary ship part behaving strangely under local conditions?"
+    },
+    {
+      "id": "index-film",
+      "workingName": "Index Film",
+      "sourceEncounterId": "senderless-sequence",
+      "portable": true,
+      "marketEligible": false,
+      "mechanicalFact": "A translucent strip changes one bounded mark in step with nearby instrument pulses; the exact marks are replayable.",
+      "interpretation": null,
+      "custodyPolicyDraft": "Archive study object. It may be exhibited or loaned by later policy but is not an asset or decoder here.",
+      "sentyrQuestion": "Can the film become a recurring mystery object, or would even its responsive behavior prefigure a reveal too strongly?"
+    },
+    {
+      "id": "threshold-wedge",
+      "workingName": "Threshold Wedge",
+      "sourceEncounterId": "inverse-tool-cradle",
+      "portable": true,
+      "marketEligible": false,
+      "mechanicalFact": "The wedge has the calibration block's measured mass and fits one observed threshold recess; no broader function is asserted.",
+      "interpretation": null,
+      "custodyPolicyDraft": "Sealed recovery with explicit containment debt. Bazaar crown is prohibited until Sentyr defines purpose and the runtime proves provenance plus live custody.",
+      "sentyrQuestion": "Should the object be a tool, key, byproduct, decoy, or something the crew should never have removed?"
+    },
+    {
+      "id": "witness-thread",
+      "workingName": "Witness Thread",
+      "sourceEncounterId": "uncommanded-return",
+      "portable": false,
+      "marketEligible": false,
+      "mechanicalFact": "A strand left on the lift rail changes color only during the committed arrival window; it remains part of the room, not recovered custody.",
+      "interpretation": null,
+      "custodyPolicyDraft": "Environmental observation only. Never mintable, portable, or exchangeable.",
+      "sentyrQuestion": "Is a visible timing witness useful texture, or should the lift remain completely unreadable to keep its arrival uncanny?"
+    }
+  ],
+  "promotionHooks": [
+    {
+      "id": "promote-galley-name",
+      "kind": "place-name",
+      "candidateRef": "afterwatch-galley",
+      "betaEvidence": "Players repeatedly return to the same room and the activated content consistently labels it with the working name.",
+      "sentyrDecision": "Choose the crew's actual name, reject the working name, or establish that several groups call it different things.",
+      "alphaValue": null,
+      "ifDeclined": "Retain the label only as beta terminal shorthand and never place it in episode dialogue."
+    },
+    {
+      "id": "promote-scar-table-motif",
+      "kind": "visual-motif",
+      "candidateRef": "afterwatch-galley",
+      "betaEvidence": "Settled field notes accumulate on one visibly repaired table without becoming canon themselves.",
+      "sentyrDecision": "Decide whether the Scar Table, or an equivalent communal surface, is worth showing in the series.",
+      "alphaValue": null,
+      "ifDeclined": "Keep it as a platform navigation surface with no claim that the show contains it."
+    },
+    {
+      "id": "promote-clearance-observation",
+      "kind": "mechanical-observation",
+      "candidateRef": "artifact-clearance-motion",
+      "betaEvidence": "Multiple judged runs reproduce the exact marker change under the same activated configuration.",
+      "sentyrDecision": "Accept, reinterpret, contradict in-world, or supersede the observation; separately decide whether anyone in the show knows it.",
+      "alphaValue": null,
+      "ifDeclined": "The records remain valid beta gameplay outcomes but do not describe alpha-canon ship geometry."
+    },
+    {
+      "id": "promote-index-film",
+      "kind": "relic-interpretation",
+      "candidateRef": "index-film",
+      "betaEvidence": "A finalized deep-recovery receipt proves the film was recovered and subsequent beta instruments record its bounded responses.",
+      "sentyrDecision": "Name what the film is, leave it unresolved, replace it with another object, or forbid its recovery in the activated pack.",
+      "alphaValue": null,
+      "ifDeclined": "Supersede the candidate or keep it as an uninterpreted beta object; no player custody becomes canon by inertia."
+    },
+    {
+      "id": "promote-silent-bearing",
+      "kind": "relic-interpretation",
+      "candidateRef": "silent-bearing",
+      "betaEvidence": "A finalized deep-recovery receipt establishes exact custody, and bounded Galley tests reproduce the bearing's three-step response without assigning it a purpose.",
+      "sentyrDecision": "Decide whether the bearing is Artificer machinery, later shipwork, a mundane part in an unusual environment, or a beta candidate that should disappear from future epochs.",
+      "alphaValue": null,
+      "ifDeclined": "Keep the historical run and injury receipts as beta gameplay, retire the object from subsequent content, and make no claim that the show contains it."
+    },
+    {
+      "id": "promote-threshold-wedge",
+      "kind": "relic-interpretation",
+      "candidateRef": "threshold-wedge",
+      "betaEvidence": "A unanimous deep-recovery receipt proves only the all-or-nothing exchange, equal measured mass, and subsequent sealed custody of the wedge.",
+      "sentyrDecision": "Choose whether the wedge is a tool, key, byproduct, decoy, hazardous mistake, or an object that should never cross from beta records into the series.",
+      "alphaValue": null,
+      "ifDeclined": "Resolve or supersede its beta custody through a later authored procedure; neither possession nor player enthusiasm promotes the object."
+    },
+    {
+      "id": "promote-ordinary-sound-phrase",
+      "kind": "crew-phrase",
+      "candidateRef": "afterwatch-galley",
+      "betaEvidence": "Maintenance completions repeatedly end on the line 'the shift record closes on an ordinary sound.'",
+      "sentyrDecision": "Decide whether 'ordinary sound' is a phrase any crew group would actually use, and if so whose.",
+      "alphaValue": null,
+      "ifDeclined": "Replace it in the next beta content epoch without rewriting old receipts."
+    },
+    {
+      "id": "promote-return-window-cameo",
+      "kind": "episode-cameo",
+      "candidateRef": "artifact-return-window",
+      "betaEvidence": "The archive contains enough exact return-window records to make a background lift arrival legible to players without exposition.",
+      "sentyrDecision": "Choose whether a later episode briefly shows the lift, uses its timing as plot material, or establishes a different extraction system.",
+      "alphaValue": null,
+      "ifDeclined": "The mechanic stays beta-only and the episode owes it no acknowledgement."
+    }
+  ]
+}

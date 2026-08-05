@@ -1,0 +1,456 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pathofangels.network/schema/private-beta-content-pack-v1.json",
+  "title": "Path of Angels private beta content pack",
+  "description": "Authoring schema only. Conformance does not activate content or confer canon status.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "packId",
+    "status",
+    "designSources",
+    "canonBoundary",
+    "recurringPlace",
+    "commonsRotations",
+    "maintenanceProcedure",
+    "crewMission",
+    "relicCandidates",
+    "promotionHooks"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "packId": { "$ref": "#/$defs/id" },
+    "status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tier", "spoilers", "authoritative", "storyAuthority", "activationState"],
+      "properties": {
+        "tier": { "const": "beta-draft" },
+        "spoilers": { "const": true },
+        "authoritative": { "const": false },
+        "storyAuthority": { "const": "Sentyr (@alteron808)" },
+        "activationState": { "const": "not-activated" }
+      }
+    },
+    "designSources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source", "borrowedShape", "excludedMaterial"],
+        "properties": {
+          "source": { "type": "string", "minLength": 1 },
+          "borrowedShape": { "type": "string", "minLength": 1 },
+          "excludedMaterial": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "canonBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gameplayTier", "alphaAuthority", "automaticPromotion", "interpretationRule"],
+      "properties": {
+        "gameplayTier": { "const": "beta" },
+        "alphaAuthority": { "const": "sentyr-explicit-curator-action" },
+        "automaticPromotion": { "const": false },
+        "interpretationRule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "recurringPlace": { "$ref": "#/$defs/place" },
+    "commonsRotations": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": { "$ref": "#/$defs/commonsRotation" }
+    },
+    "maintenanceProcedure": { "$ref": "#/$defs/maintenance" },
+    "crewMission": { "$ref": "#/$defs/crewMission" },
+    "relicCandidates": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/relic" }
+    },
+    "promotionHooks": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/promotionHook" }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "copy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intel", "supplies", "cohesion", "influence", "score", "relicIds"],
+      "properties": {
+        "intel": { "type": "integer", "minimum": 0 },
+        "supplies": { "type": "integer", "minimum": 0 },
+        "cohesion": { "type": "integer", "minimum": 0 },
+        "influence": { "type": "integer", "minimum": 0 },
+        "score": { "type": "integer", "minimum": 0 },
+        "relicIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        }
+      }
+    },
+    "place": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "workingName", "pitch", "playerVerbs", "stations", "persistentTraces", "sentyrQuestions"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "workingName": { "$ref": "#/$defs/copy" },
+        "pitch": { "$ref": "#/$defs/copy" },
+        "playerVerbs": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "stations": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "workingName", "function", "changesWhen"],
+            "properties": {
+              "id": { "$ref": "#/$defs/id" },
+              "workingName": { "$ref": "#/$defs/copy" },
+              "function": { "$ref": "#/$defs/copy" },
+              "changesWhen": { "$ref": "#/$defs/copy" }
+            }
+          }
+        },
+        "persistentTraces": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/copy" }
+        },
+        "sentyrQuestions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/copy" }
+        }
+      }
+    },
+    "commonsChoice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "workingLabel", "capacity", "localService", "servedCopy", "alternativeCopy", "provisioningTag"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "workingLabel": { "$ref": "#/$defs/copy" },
+        "capacity": { "type": "integer", "minimum": 1 },
+        "localService": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "servedCopy": { "$ref": "#/$defs/copy" },
+        "alternativeCopy": { "$ref": "#/$defs/copy" },
+        "provisioningTag": { "enum": ["steady", "alert", "recovery", "expedition"] }
+      }
+    },
+    "commonsRotation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sceneCopy", "choices"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "sceneCopy": { "$ref": "#/$defs/copy" },
+        "choices": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 8,
+          "items": { "$ref": "#/$defs/commonsChoice" }
+        }
+      }
+    },
+    "maintenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "workingTitle", "taskCopy", "instructionCopy", "procedure", "successCopy", "failureCopy", "successCondition", "semanticOutput"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "workingTitle": { "$ref": "#/$defs/copy" },
+        "taskCopy": { "$ref": "#/$defs/copy" },
+        "instructionCopy": { "$ref": "#/$defs/copy" },
+        "procedure": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "verb", "prompt", "completionCue", "outOfOrderCue", "semanticTag"],
+            "properties": {
+              "id": { "$ref": "#/$defs/id" },
+              "verb": { "$ref": "#/$defs/id" },
+              "prompt": { "$ref": "#/$defs/copy" },
+              "completionCue": { "$ref": "#/$defs/copy" },
+              "outOfOrderCue": { "$ref": "#/$defs/copy" },
+              "semanticTag": { "enum": ["inspect", "isolate", "route", "vent", "calibrate", "reseed", "verify"] }
+            }
+          }
+        },
+        "successCopy": { "$ref": "#/$defs/copy" },
+        "failureCopy": { "$ref": "#/$defs/copy" },
+        "successCondition": { "const": "exact-ordered-procedure" },
+        "semanticOutput": { "$ref": "#/$defs/contribution" }
+      }
+    },
+    "topology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entryRoom", "extractionRoom", "rooms", "edges"],
+      "properties": {
+        "entryRoom": { "$ref": "#/$defs/id" },
+        "extractionRoom": { "$ref": "#/$defs/id" },
+        "rooms": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 128,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "workingName", "sensoryDraft"],
+            "properties": {
+              "id": { "$ref": "#/$defs/id" },
+              "workingName": { "$ref": "#/$defs/copy" },
+              "sensoryDraft": { "$ref": "#/$defs/copy" }
+            }
+          }
+        },
+        "edges": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 512,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "from", "to", "modifier"],
+            "properties": {
+              "id": { "$ref": "#/$defs/id" },
+              "from": { "$ref": "#/$defs/id" },
+              "to": { "$ref": "#/$defs/id" },
+              "modifier": { "enum": ["oneWay", "wrapHorizontal", "wrapVertical", "mirrorHorizontal", "mirrorVertical", "phase0to1"] }
+            }
+          }
+        }
+      }
+    },
+    "crewRole": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "privateObservationKind", "surveyCommand", "salvageCommand", "playerQuestion"],
+      "properties": {
+        "role": { "enum": ["pathfinder", "engineer", "containment", "quartermaster"] },
+        "privateObservationKind": { "enum": ["mappedRoute", "structurallySoundRoute", "hazardClearRoute", "extractionWindow"] },
+        "surveyCommand": { "$ref": "#/$defs/id" },
+        "salvageCommand": { "$ref": "#/$defs/id" },
+        "playerQuestion": { "$ref": "#/$defs/copy" }
+      }
+    },
+    "briefing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "observation", "recommendedRoute", "disclosure"],
+      "properties": {
+        "role": { "enum": ["pathfinder", "engineer", "containment", "quartermaster"] },
+        "observation": { "$ref": "#/$defs/copy" },
+        "recommendedRoute": {
+          "oneOf": [
+            { "enum": ["maintenanceSpine", "signalGallery", "sealedNave"] },
+            { "type": "null" }
+          ]
+        },
+        "disclosure": { "const": "private-until-signed-handoff" }
+      }
+    },
+    "encounter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "roomId", "workingName", "engineBinding", "mechanicalClass", "routeIds", "mechanicalTruth", "playerDecision", "successEffect", "failureEffect", "betaArtifactIds", "sealedInterpretationQuestions"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "roomId": { "$ref": "#/$defs/id" },
+        "workingName": { "$ref": "#/$defs/copy" },
+          "engineBinding": { "enum": ["presentation", "navigation", "hazard", "containment", "discovery", "salvage", "extraction"] },
+        "mechanicalClass": { "enum": ["navigation", "pressure", "unstableMachinery", "containment", "discovery", "salvage", "recovery"] },
+        "routeIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["maintenanceSpine", "signalGallery", "sealedNave"] }
+        },
+        "mechanicalTruth": { "$ref": "#/$defs/copy" },
+        "playerDecision": { "$ref": "#/$defs/copy" },
+        "successEffect": { "$ref": "#/$defs/copy" },
+        "failureEffect": { "$ref": "#/$defs/copy" },
+        "betaArtifactIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "sealedInterpretationQuestions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/copy" }
+        }
+      }
+    },
+    "routeOutcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["route", "extraction", "operationalCost", "requiredAgreement", "featuredArtifactId", "contribution", "recoveryConsequence"],
+      "properties": {
+        "route": { "enum": ["maintenanceSpine", "signalGallery", "sealedNave"] },
+        "extraction": { "enum": ["returnNow", "descendFurther"] },
+        "operationalCost": { "type": "integer", "minimum": 0 },
+        "requiredAgreement": { "enum": ["two-specialist-route-support", "full-crew-unanimity"] },
+        "featuredArtifactId": { "$ref": "#/$defs/id" },
+        "contribution": { "$ref": "#/$defs/contribution" },
+        "recoveryConsequence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["grade", "draftEffect", "duration", "implementationState"],
+          "properties": {
+            "grade": { "enum": ["clean", "marked", "injured", "containment-debt", "equipment-unavailable", "lost-opportunity"] },
+            "draftEffect": { "$ref": "#/$defs/copy" },
+            "duration": { "$ref": "#/$defs/copy" },
+            "implementationState": { "const": "content-draft-not-yet-semantic" }
+          }
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "workingName", "visibility", "mechanicalFact", "interpretation", "archiveSilhouette", "archiveHint"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "workingName": { "$ref": "#/$defs/copy" },
+        "visibility": { "enum": ["public-after-run", "crew-record", "curator-sealed"] },
+        "mechanicalFact": { "$ref": "#/$defs/copy" },
+        "interpretation": { "type": "null" },
+        "archiveSilhouette": { "$ref": "#/$defs/copy" },
+        "archiveHint": { "$ref": "#/$defs/copy" }
+      }
+    },
+    "crewMission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "workingTitle", "pitch", "turnBudget", "operationalBudget", "contributionBudget", "decisionRules", "roles", "briefings", "topology", "routes", "encounters", "artifacts", "routeOutcomes"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "workingTitle": { "$ref": "#/$defs/copy" },
+        "pitch": { "$ref": "#/$defs/copy" },
+        "turnBudget": { "type": "integer", "minimum": 1, "maximum": 64 },
+        "operationalBudget": { "type": "integer", "minimum": 1 },
+        "contributionBudget": { "$ref": "#/$defs/contribution" },
+        "decisionRules": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["safeReturn", "deepRecovery", "privacy"],
+          "properties": {
+            "safeReturn": { "const": "two-specialist-route-support" },
+            "deepRecovery": { "const": "full-crew-unanimity" },
+            "privacy": { "const": "operator-visible-briefings-then-public-signed-handoffs" }
+          }
+        },
+        "roles": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/crewRole" }
+        },
+        "briefings": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/briefing" }
+        },
+        "topology": { "$ref": "#/$defs/topology" },
+        "routes": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "workingName", "encounterIds", "temptation", "warning"],
+            "properties": {
+              "id": { "enum": ["maintenanceSpine", "signalGallery", "sealedNave"] },
+              "workingName": { "$ref": "#/$defs/copy" },
+              "encounterIds": {
+                "type": "array",
+                "minItems": 2,
+                "uniqueItems": true,
+                "items": { "$ref": "#/$defs/id" }
+              },
+              "temptation": { "$ref": "#/$defs/copy" },
+              "warning": { "$ref": "#/$defs/copy" }
+            }
+          }
+        },
+        "encounters": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 10,
+          "items": { "$ref": "#/$defs/encounter" }
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/artifact" }
+        },
+        "routeOutcomes": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": { "$ref": "#/$defs/routeOutcome" }
+        }
+      }
+    },
+    "relic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "workingName", "sourceEncounterId", "portable", "marketEligible", "mechanicalFact", "interpretation", "custodyPolicyDraft", "sentyrQuestion"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "workingName": { "$ref": "#/$defs/copy" },
+        "sourceEncounterId": { "$ref": "#/$defs/id" },
+        "portable": { "type": "boolean" },
+        "marketEligible": { "const": false },
+        "mechanicalFact": { "$ref": "#/$defs/copy" },
+        "interpretation": { "type": "null" },
+        "custodyPolicyDraft": { "$ref": "#/$defs/copy" },
+        "sentyrQuestion": { "$ref": "#/$defs/copy" }
+      }
+    },
+    "promotionHook": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "candidateRef", "betaEvidence", "sentyrDecision", "alphaValue", "ifDeclined"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "enum": ["place-name", "visual-motif", "mechanical-observation", "relic-interpretation", "crew-phrase", "episode-cameo"] },
+        "candidateRef": { "$ref": "#/$defs/id" },
+        "betaEvidence": { "$ref": "#/$defs/copy" },
+        "sentyrDecision": { "$ref": "#/$defs/copy" },
+        "alphaValue": { "type": "null" },
+        "ifDeclined": { "$ref": "#/$defs/copy" }
+      }
+    }
+  }
+}
